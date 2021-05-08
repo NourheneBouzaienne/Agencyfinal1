@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les candidats{% endblock %}
+
+{% block body %}
+<div class="section-full content-inner bg-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 section-head text-center">
+						<h2 class="m-b5">les candidats</h2>
+						<h6 class="fw4 m-b0">nombre des candidats : </h6>
+					</div>
+				</div>
+				<div class="row">
+                {% for c in candidats %}
+					<div class="col-lg-3 col-sm-6 col-md-6 m-b30">
+						<div class="city-bx align-items-end  d-flex" style="background-image:url({{asset('images/candidats/' ~ c.image)}})">
+							<div class="city-info">
+								<h5>{{c.nom }}</h5>
+								<span>{{ c.status}}</span>
+                                <br>
+                                <span>{{ c.age}}</span>
+							</div>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+{% endblock %}
