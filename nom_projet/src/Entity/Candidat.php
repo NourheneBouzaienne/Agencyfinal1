@@ -41,6 +41,7 @@ class Candidat
 
 
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +94,8 @@ class Candidat
 
         return $this;
     }
+
+    
 
    
 }

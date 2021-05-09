@@ -1,0 +1,39 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Recruteur index{% endblock %}
+
+{% block body %}
+    <h1>Recruteur index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Departement</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recruteur in recruteurs %}
+            <tr>
+                <td>{{ recruteur.id }}</td>
+                <td>{{ recruteur.nom }}</td>
+                <td>{{ recruteur.departement }}</td>
+                <td><img class="img-responsive" style="width: 150px;" src="{{asset('images/candidats/' ~ recruteur.image  )}}"></td>
+                <td>
+                    <a class="btn btn-danger"  href="{{ path('recruteur_show', {'id': recruteur.id}) }}">show</a>
+                    <a class="btn btn-warning"  href="{{ path('recruteur_edit', {'id': recruteur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('recruteur_new') }}">Create new</a>
+{% endblock %}

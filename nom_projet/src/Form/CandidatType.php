@@ -17,12 +17,8 @@ class CandidatType extends AbstractType
             ->add('nom')
             ->add('status')
             ->add('image')
-            ->add('age')
-            ->add('offres',EntityType::class,[
-                'class'=>OffreEmploi::class,
-                'choice_label'=>"nom"
-            ])
-        ;
+            ->add('age');
+        
     }
 
     public function configureOptions(OptionsResolver $resolver)

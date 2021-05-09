@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}Candidat index{% endblock %}
 
@@ -22,11 +22,11 @@
                 <td>{{ candidat.id }}</td>
                 <td>{{ candidat.nom }}</td>
                 <td>{{ candidat.status }}</td>
-                <td>{{ candidat.image }}</td>
+                <td><img class="img-responsive" style="width: 150px;" src="{{asset('images/candidats/' ~ candidat.image )}}"  ></td>
                 <td>{{ candidat.age }}</td>
                 <td>
-                    <a href="{{ path('candidat_crud_show', {'id': candidat.id}) }}">show</a>
-                    <a href="{{ path('candidat_crud_edit', {'id': candidat.id}) }}">edit</a>
+                    <a class="btn btn-danger" href="{{ path('candidat_crud_show', {'id': candidat.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('candidat_crud_edit', {'id': candidat.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('candidat_crud_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('candidat_crud_new') }}">Create new</a>
 {% endblock %}
