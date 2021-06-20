@@ -178,7 +178,5 @@ class OffreEmploi
 
         return $this;
     }
-
-
-    
+  
 }

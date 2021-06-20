@@ -5,6 +5,9 @@
 {% block body %}
 <div class="section-full job-categories content-inner-2 bg-white" style="background-image:url(../images/pattern/pic1.html);">
     <div class="container">
+     <form action="{{path('categorie_crud_new')}}">                                 
+         <button class="btn btn-success"> <i class="fa fa-tick"></i>Ajouter une categorie</button>
+  </form>
         <div class="row sp20">
             {% for c in categories %}
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -15,7 +18,7 @@
                             <p class="m-a0">{{ c.description }}</p>
                             <div class="rotate-icon"><i class="ti-location-pin"></i></div> 
                             </div>
-                        </div>				
+                        </div>
                     </div>
                     {% endfor %}
                 </div>

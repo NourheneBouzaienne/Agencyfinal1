@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidature index{% endblock %}
+
+{% block body %}
+    <h1>Candidature index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomcandidat</th>
+                <th>Numerodetel</th>
+                <th>Email</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidature in candidatures %}
+            <tr>
+                <td>{{ candidature.id }}</td>
+                <td>{{ candidature.nomcandidat }}</td>
+                <td>{{ candidature.numerodetel }}</td>
+                <td>{{ candidature.email }}</td>
+                <td>{{ candidature.etat }}</td>
+                <td>
+                    <a href="{{ path('candidature_crud_show', {'id': candidature.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('candidature_crud_edit', {'id': candidature.id}) }}" class="btn btn-warning">edit</a>
+                    <a href="{{ path('changeretatconfirme', {'id': candidature.id}) }}" class="btn btn-success">accepter candidature</a>
+                    <a href="{{ path('changeretatrefuse', {'id': candidature.id}) }}" class="btn btn-danger">refuser candidature</a>
+                    <a href="{{ path('rdv_crud_index', {'id': candidature.id}) }}" class="btn btn-dark">RDV</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('candidature_crud_new') }}">Create new</a>
+{% endblock %}

@@ -2,14 +2,16 @@
 
 namespace App\Repository;
 
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Candidat;
+use App\Entity\RechercheCondidat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Candidat|null find($id, $lockMode = null, $lockVersion = null)
  * @method Candidat|null findOneBy(array $criteria, array $orderBy = null)
- * @method Candidat[]    findAll()
+
  * @method Candidat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CandidatRepository extends ServiceEntityRepository
@@ -19,32 +21,34 @@ class CandidatRepository extends ServiceEntityRepository
         parent::__construct($registry, Candidat::class);
     }
 
-    // /**
-    //  * @return Candidat[] Returns an array of Candidat objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Candidat[] Returns an array of Candidat objects
+      */
+    
+     public function findAllWithPagination( RechercheCondidat $rechercheCondidat)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Candidat
+
+        $req = $this->createQueryBuilder('Condidat');
+        return $req-> getQuery();
+
+        if ($rechercheCondidat->getStatus()){
+            $req = $req->andWhere('Condidat.id=:val')
+            ->setParameter(':val',$rechercheCondidat->getid());
+        }
+        
+    } 
+
+    
+   
+    /* public function findOneBySomeField(RechercheCondidat $rechercheCondidat): ?Candidat
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('Condidat')
+            ->andWhere('Condidat.id = :val')
+            ->setParameter('val', $rechercheCondidat->getid())
             ->getQuery()
             ->getOneOrNullResult()
         ;
-    }
-    */
+    } */
+    
 }

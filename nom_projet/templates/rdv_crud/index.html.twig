@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rdv index{% endblock %}
+
+{% block body %}
+    <h1>Rdv index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomCandidat</th>
+                <th>EmailCandidat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr>
+                <td>{{ rdv.id }}</td>
+                <td>{{ rdv.NomCandidat }}</td>
+                <td>{{ rdv.EmailCandidat }}</td>
+                <td>
+                    <a href="{{ path('rdv_crud_show', {'id': rdv.id}) }}">show</a>
+                    <a href="{{ path('rdv_crud_edit', {'id': rdv.id}) }}">edit</a>
+                    <a href="{{ path('rdv_crud_delete', {'id': rdv.id}) }}">delete</a>
+                
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rdv_crud_new') }}">Create new</a>
+{% endblock %}

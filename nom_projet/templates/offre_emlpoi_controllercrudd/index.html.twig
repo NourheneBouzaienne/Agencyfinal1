@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreEmploi index{% endblock %}
+
+{% block body %}
+    <h1>OffreEmploi index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Nombreposte</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Salaire</th>
+                <th>Comptences</th>
+                <th>Etat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre_emploi in offre_emplois %}
+            <tr>
+                <td>{{ offre_emploi.id }}</td>
+                <td>{{ offre_emploi.nom }}</td>
+                <td>{{ offre_emploi.description }}</td>
+                <td>{{ offre_emploi.nombreposte }}</td>
+                <td>{{ offre_emploi.datedebut ? offre_emploi.datedebut|date('Y-m-d') : '' }}</td>
+                <td>{{ offre_emploi.datefin ? offre_emploi.datefin|date('Y-m-d') : '' }}</td>
+                <td>{{ offre_emploi.salaire }}</td>
+                <td>{{ offre_emploi.comptences }}</td>
+                <td>{{ offre_emploi.etat }}</td>
+                <td>
+                    <a href="{{ path('offre_emlpoi_controllercrudd_show', {'id': offre_emploi.id}) }}">show</a>
+                    <a href="{{ path('offre_emlpoi_controllercrudd_edit', {'id': offre_emploi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('offre_emlpoi_controllercrudd_new') }}">Create new</a>
+{% endblock %}

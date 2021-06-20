@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreEmploi{% endblock %}
+
+{% block body %}
+    <h1>OffreEmploi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre_emploi.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ offre_emploi.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offre_emploi.description }}</td>
+            </tr>
+            <tr>
+                <th>Nombreposte</th>
+                <td>{{ offre_emploi.nombreposte }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ offre_emploi.datedebut ? offre_emploi.datedebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ offre_emploi.datefin ? offre_emploi.datefin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ offre_emploi.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Comptences</th>
+                <td>{{ offre_emploi.comptences }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ offre_emploi.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('offre_emlpoi_controllercrudd_index') }}">back to list</a>
+
+    <a href="{{ path('offre_emlpoi_controllercrudd_edit', {'id': offre_emploi.id}) }}">edit</a>
+
+    {{ include('offre_emlpoi_controllercrudd/_delete_form.html.twig') }}
+{% endblock %}

@@ -5,7 +5,9 @@
 {% block body %}
 <div class="section-full bg-white content-inner-2">
 			<div class="container">
-                <button class="btn btn-success"><i class="fa fa-tick"></i>ajouter un offre</button>
+   <form action="{{path('offre_emlpoi_controllercrudd_new')}}">                               
+         <button class="btn btn-success"> <i class="fa fa-tick"></i>ajouter un offre</button>
+  </form>
 				<div class="row">
                 {% for o in offres %}
 					<div class="col-lg-9">

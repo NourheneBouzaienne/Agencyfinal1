@@ -7,10 +7,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 section-head text-center">
-						<h2 class="m-b5">les candidats</h2>
-						<h6 class="fw4 m-b0">nombre des candidats : </h6>
-					</div>
+						<h2 class="m-b5">Les Candidats</h2>
+					
+					<a href="{{ path('candidature_crud_index') }}">Liste des Candidatures</a>
 				</div>
+				{{form_start(form)}}
+                    <div class="row no gutters align-items-center text center">
+					<div class="col">
+					{{form_widget(form)}}
+					</div>
+					<div class ="col-2">
+					<input type="submit" value="rechercher" class="btn btn-secondary">
+					
+	                </div>
+                 {{form_end(form)}}
 				<div class="row">
                 {% for c in candidats %}
 					<div class="col-lg-3 col-sm-6 col-md-6 m-b30">

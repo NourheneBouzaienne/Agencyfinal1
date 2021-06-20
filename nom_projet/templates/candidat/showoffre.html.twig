@@ -24,7 +24,7 @@
 												<li><i class="fa fa-clock-o"></i>{{ o.datedebut|date('Y-M-D') }}</li>
 												<li><i class="fa fa-clock-o"></i>{{ o.datefin|date('Y-M-D') }}</li>
                                                 <li>
-                                                <form action="{{path('candidat_crud_new')}}">
+                                                <form action="{{path('candidature_crud_new')}}">
                                                    <button class="btn btn-success">postuler</button>
                                                 </form>
                                                 </li>
@@ -44,7 +44,6 @@
 							</li>
 						</ul>
 						<div class="m-t30">
-							
 						</div>
 					</div>
                      {% endfor %}

@@ -3,7 +3,7 @@
 {% block title %}Candidat index{% endblock %}
 
 {% block body %}
-    <h1>Candidat index</h1>
+    <h2>Liste des Candidats</h2>
 
     <table class="table">
         <thead>
@@ -25,8 +25,8 @@
                 <td><img class="img-responsive" style="width: 150px;" src="{{asset('images/candidats/' ~ candidat.image )}}"  ></td>
                 <td>{{ candidat.age }}</td>
                 <td>
-                    <a class="btn btn-danger" href="{{ path('candidat_crud_show', {'id': candidat.id}) }}">show</a>
-                    <a class="btn btn-warning" href="{{ path('candidat_crud_edit', {'id': candidat.id}) }}">edit</a>
+                    <a class="btn btn-danger" href="{{ path('candidat_crud_show', {'id': candidat.id}) }}">Consulter</a>
+                    <a class="btn btn-warning" href="{{ path('candidat_crud_edit', {'id': candidat.id}) }}">Supprimer</a>
                 </td>
             </tr>
         {% else %}

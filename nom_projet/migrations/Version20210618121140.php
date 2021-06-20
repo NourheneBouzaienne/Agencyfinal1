@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210508002201 extends AbstractMigration
+final class Version20210618121140 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,8 @@ final class Version20210508002201 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE offre_emploi ADD categorie_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE offre_emploi ADD CONSTRAINT FK_132AD0D1BCF5E72D FOREIGN KEY (categorie_id) REFERENCES categorie (id)');
-        $this->addSql('CREATE INDEX IDX_132AD0D1BCF5E72D ON offre_emploi (categorie_id)');
+        $this->addSql('DROP TABLE search');
+        $this->addSql('DROP TABLE search_type');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +31,7 @@ final class Version20210508002201 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE offre_emploi DROP FOREIGN KEY FK_132AD0D1BCF5E72D');
-        $this->addSql('DROP INDEX IDX_132AD0D1BCF5E72D ON offre_emploi');
-        $this->addSql('ALTER TABLE offre_emploi DROP categorie_id');
+        $this->addSql('CREATE TABLE search (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('CREATE TABLE search_type (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
     }
 }

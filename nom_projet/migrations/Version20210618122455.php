@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210508034143 extends AbstractMigration
+final class Version20210618122455 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20210508034143 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE offre_emploi ADD candidat_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE offre_emploi ADD CONSTRAINT FK_132AD0D18D0EB82 FOREIGN KEY (candidat_id) REFERENCES candidat (id)');
-        $this->addSql('CREATE INDEX IDX_132AD0D18D0EB82 ON offre_emploi (candidat_id)');
+        $this->addSql('CREATE TABLE rdv (id INT AUTO_INCREMENT NOT NULL, nom_candidat VARCHAR(255) NOT NULL, email_candidat VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20210508034143 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE offre_emploi DROP FOREIGN KEY FK_132AD0D18D0EB82');
-        $this->addSql('DROP INDEX IDX_132AD0D18D0EB82 ON offre_emploi');
-        $this->addSql('ALTER TABLE offre_emploi DROP candidat_id');
+        $this->addSql('DROP TABLE rdv');
     }
 }

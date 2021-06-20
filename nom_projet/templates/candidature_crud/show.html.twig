@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+    <h1>Candidature</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidature.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomcandidat</th>
+                <td>{{ candidature.nomcandidat }}</td>
+            </tr>
+            <tr>
+                <th>Numerodetel</th>
+                <td>{{ candidature.numerodetel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ candidature.email }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ candidature.etat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('candidature_crud_index') }}">back to list</a>
+
+    <a href="{{ path('candidature_crud_edit', {'id': candidature.id}) }}">edit</a>
+
+    {{ include('candidature_crud/_delete_form.html.twig') }}
+{% endblock %}

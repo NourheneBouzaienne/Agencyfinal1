@@ -1,0 +1,18 @@
+
+{{ form_start(form) }}
+{{ form_row(form.nomcandidat, {
+        "attr": {"placeholder": "Saisir votre nom" },
+        "label": "Votre nom"
+    })}}
+     {{ form_row(form.numerodetel, {
+        "attr": {"placeholder": "Saisir votre numero de telephone" }
+       , "label": "Votre numero de telephone"
+
+    })}}
+    {{ form_row(form.email, {
+        "attr": {"placeholder": "Saisir votre email" }
+        ,"label": "Votre email"
+    })}}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
